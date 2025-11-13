@@ -1,0 +1,191 @@
+/* =========================
+   Topbar
+   ========================= */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #f0e6e5;
+  backdrop-filter: blur(2px);
+}
+
+/* Contenedor */
+.topbar__inner {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Izquierda: logo */
+.topbar__left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+.topbar__brand { line-height: 0; cursor: pointer; }
+.topbar__brand svg,
+.topbar__brand img {
+  height: 40px !important;  /* ↑ un poco más grande */
+  width: auto;
+}
+
+/* Derecha: chip + menú + salir */
+.topbar__right {
+  margin-left: auto !important;  /* fuerzo derecha */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar__chip {
+  color: var(--ink, #302419);
+  background: #fff;
+  border: 1px solid #ecdedd;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+.topbar__chip strong { font-weight: 500; }
+
+.topbar__back {
+  background: transparent;
+  color: var(--ink, #302419);
+  border: 1px solid var(--rose, #E9CDCB);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.topbar__back:hover { background: #f8f1f0; }
+
+.topbar__logout {
+  background: var(--rose, #fff);
+  color: var(--ink, #302419);
+  border: 1px solid #E9CDCB ;
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.topbar__logout:hover { filter: brightness(1.03); }
+
+/* Foco accesible */
+.topbar__back:focus-visible,
+.topbar__logout:focus-visible {
+  outline: 2px solid var(--rose, #E9CDCB);
+  outline-offset: 2px;
+}
+
+/* Icon button */
+.topbar__iconbtn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:999px;
+  border:1px solid #e5e7eb;background:#fff;color:#374151;
+  margin-right:10px;transition:box-shadow .18s ease, transform .12s ease;
+  cursor:pointer;
+}
+.topbar__iconbtn:hover{box-shadow:0 6px 18px rgba(0,0,0,.08);transform:translateY(-1px);}
+.topbar__iconbtn:active{transform:translateY(0);}
+
+/* ===== Modal ===== */
+
+.modal__card{
+  width:min(980px,96vw);max-height:92vh;display:flex;flex-direction:column;
+  background:#fff;border:1px solid #eef1f6;border-radius:16px;
+  box-shadow:0 24px 64px rgba(0,0,0,.22);overflow:hidden;
+}
+.modal__header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border-bottom:1px solid #f1f5f9;background:#fafafa;
+}
+.modal__title{display:flex;flex-direction:column;gap:2px;}
+.modal__subtitle{font-size:12px;color:#6b7280;}
+.modal__close{
+  border:0;background:transparent;font-size:18px;cursor:pointer;
+  line-height:1;color:#374151;border-radius:8px;padding:4px 6px;
+}
+.modal__close:hover{background:#f3f4f6;}
+
+.modal__tabs{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;
+  border-bottom:1px solid #f1f5f9;background:#fff;
+}
+.modal__tab{
+  padding:6px 10px;border:1px solid #e5e7eb;background:#fff;border-radius:999px;
+  cursor:pointer;font-size:13px;color:#334155;transition:.15s ease;
+}
+.modal__tab.is-active{background:#f6f3f2;border-color:#e7dede;}
+.modal__spacer{flex:1;}
+.modal__refresh{
+  border:1px solid #e5e7eb;background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;
+}
+.modal__refresh:hover{background:#f9fafb;}
+
+.modal__body{padding:10px 12px 16px;display:flex;flex-direction:column;gap:8px;}
+.modal__loading{padding:24px;color:#6b7280;text-align:center;}
+
+.modal__tablewrap{overflow:auto;border:1px solid #f1f5f9;border-radius:12px;}
+.modal__table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;}
+.modal__table thead th{
+  position:sticky;top:0;z-index:1;background:#fcfcfc;border-bottom:1px solid #eef2f7;
+  padding:10px 12px;text-align:left;color:#374151;font-weight:600;
+}
+.modal__table td{padding:9px 12px;border-bottom:1px solid #f6f7fb;color:#374151;}
+.modal__table tbody tr:nth-child(odd){background:#fff;}
+.modal__table tbody tr:nth-child(even){background:#fdfcfc;}
+.modal__ellipsis{max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.modal__empty{text-align:center;color:#6b7280;padding:18px 8px;}
+
+/* Backdrop fijo al viewport (no afecta navbar) */
+.modal__backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(17,24,39,.38);
+  z-index: 1000;           /* por encima del header */
+}
+
+/* El card ahora es fijo y lo posicionamos con left/top desde React */
+.modal__card--fixed{
+  position: fixed;
+}
+
+/* Manito de arrastre en el header */
+.modal__draghandle{
+  cursor: grab;
+  user-select: none;
+}
+.modal__card.is-dragging .modal__draghandle{
+  cursor: grabbing;
+}
+
+/* Evitar scroll del body al abrir el modal */
+body.no-scroll{ overflow: hidden; }
+
+
+/* Backdrop fijo al viewport, no afecta el navbar */
+.modal__backdrop{ position:fixed; inset:0; background:rgba(17,24,39,.38); z-index:1000; }
+
+/* El card se posiciona por left/top desde React */
+.modal__card--fixed{ position:fixed; }
+
+/* Señal visual de arrastre */
+.modal__card{ cursor: grab; }
+.modal__card.is-dragging{ cursor: grabbing; }
+
+/* Evitar scroll del body cuando hay modal */
+body.no-scroll{ overflow:hidden; }
+
+
+/* Responsivo */
+@media (max-width: 720px) {
+  .topbar__inner { padding: 10px 12px; }
+  .topbar__brand svg,
+  .topbar__brand img { height: 34px !important; }
+  .topbar__right { gap: 8px; }
+  .topbar__chip { padding: 6px 10px; }
+}
+@media (max-width: 480px) {
+  .topbar__chip { display: none; }
+}

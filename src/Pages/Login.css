@@ -1,0 +1,214 @@
+/* ========= Login centrado y “estrecho” ========= */
+
+.login-center {
+  min-height: 100svh;           /* ocupa toda la altura */
+  display: grid;                /* centrado perfecto */
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(640px, 94vw);      /* rectangular/estrecha */
+  background: #fff;
+  border-radius: 22px;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, .28),
+    0 10px 28px rgba(0, 0, 0, .18);
+  padding: 28px 26px 22px;
+}
+
+/* Marca arriba */
+.login-brand {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+.login-brand img, 
+.login-brand svg {
+  height: 58px;                 /* puedes ajustar si quieres más */
+  display: block;
+}
+
+/* Título */
+.login-title {
+  margin: 10px 0 18px;
+  text-align: center;
+  font-family: "Mokoko", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: #302419;               /* marrón */
+  font-size: clamp(26px, 3.2vw, 28px);
+}
+
+/* ========= Campos ========= */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  border: 2px solid #E9CDCB;    /* rosa */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.input__icon {
+  flex: 0 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #E9CDCB;          /* leve rosado */
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  stroke: #302419;              /* marrón */
+  stroke-width: 1.7;
+  fill: none;
+}
+
+/* relleno claro en el input, como lo tenías */
+.input__control {
+  width: 100%;
+  padding: 14px 14px;
+  font-size: 18px;
+  border: 0;
+  outline: 0;
+  background: #e9f0ff;          /* celeste muy suave */
+  color: #302419;
+}
+
+.input__control::placeholder {
+  color: #a39a97;               /* gris suave */
+}
+
+/* ========= Botón ========= */
+
+.btn {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  padding: 16px 18px;
+  border: 0;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  color: #302419;               /* texto marrón */
+  background: #E9CDCB;          /* rosa */
+  cursor: pointer;
+  box-shadow: 0 16px 26px rgba(227, 186, 183, .45);
+  transition: transform .05s ease, box-shadow .2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 36px rgba(227, 186, 183, .55);
+}
+
+/* ========= Legal ========= */
+
+.login-legal {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #9b8f8c;               /* gris como el interior del input */
+  text-align: center;
+}
+.login-legal b {
+  color: #302419;
+}
+
+/* Barra rosada a la izquierda: ocupa el 100% del alto del contenedor */
+.field {
+  position: relative;
+  overflow: hidden;            /* respeta el borde redondeado */
+}
+
+.field::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;                   /* ← clave: pega arriba y abajo */
+  width: 10px;                 /* ↑ grosor de la línea (ajustá: 8–12px) */
+  background: #E9CDCB;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  pointer-events: none;        /* no bloquea clics */
+}
+
+
+/* Resp. */
+@media (max-width: 520px) {
+  .login-card { padding: 22px 18px 18px; }
+  .input__control { font-size: 17px; }
+}
+
+/* ===== Fondo con mosaico del logo ===== */
+.auth-page{
+  /* knobs para ajustar rápido */
+  --tile-size: 320px;     /* tamaño del logo repetido */
+  --tile-opacity: 0.08;   /* intensidad del patrón */
+  --bg: #21160f;          /* color base del fondo */
+
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  /* velos/luces del fondo */
+  background:
+    radial-gradient(1200px 600px at 70% 15%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 500px at 20% 85%, rgba(255,182,193,.06), transparent 65%),
+    var(--bg);
+  overflow: hidden;
+}
+
+/* ===== Fondo con mosaico del logo (versión más visible) ===== */
+.auth-page{
+  /* knobs para ajustar en 2s */
+  --tile-size: clamp(220px, 22vw, 280px); /* tamaño del logo repetido */
+  --tile-opacity: .40;                    /* fuerza del patrón (subí a .22 si querés) */
+  --bg: #21160f;                          /* marrón de fondo */
+
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(1100px 550px at 70% 15%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 500px at 20% 85%, rgba(255,182,193,.07), transparent 65%),
+    var(--bg);
+  overflow: hidden;
+}
+
+/* Mosaico del logo */
+.auth-page::before{
+  content: "";
+  position: fixed;             /* cubre toda la ventana y no “salta” al hacer scroll */
+  inset: 0;
+  background-image: url("/Fran.png"); /* asegurate que el PNG esté en /public y tenga fondo transparente */
+  background-repeat: repeat;
+  background-size: var(--tile-size) auto;
+  background-position: 0 0;
+  opacity: var(--tile-opacity);
+
+  /* nitidez / contraste del patrón */
+  filter: grayscale(100%) contrast(170%) brightness(125%);
+  /* si querés que el patrón “tinte” el fondo, probá: */
+  /* mix-blend-mode: overlay; */
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* La tarjeta queda por encima del patrón */
+.login-wrap,
+.login-card{ position: relative; z-index: 1; }
+
+

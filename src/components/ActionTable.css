@@ -1,0 +1,7 @@
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:1px solid #e5e7eb;background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
+.pill-wa{border-color:#25D36633}
+.pill-mail{border-color:#3b82f633}
+.pill-call{border-color:#10b98133}
+.pill-task{border-color:#f59e0b33}
+.pill:hover{box-shadow:0 0 0 3px var(--ring)}

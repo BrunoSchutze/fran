@@ -1,0 +1,83 @@
+.dashboard-container {
+  background-color: #fff;
+  color: #3a2e25;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: #6f4e37;
+  font-weight: 700;
+}
+
+.branch-name {
+  color: #a57463;
+  font-weight: 500;
+}
+
+.charts-section {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background: #fff8f9;
+  border: 1px solid #f4b6c2;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(111, 78, 55, 0.1);
+  padding: 1.5rem;
+  flex: 1 1 45%;
+  min-width: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 14px rgba(111, 78, 55, 0.2);
+}
+
+.csat-bar {
+  margin-top: 1rem;
+}
+
+.bar-label {
+  margin-top: 0.8rem;
+  font-weight: 500;
+  color: #6f4e37;
+}
+
+.bar-track {
+  background-color: #fce4ec;
+  border-radius: 10px;
+  height: 12px;
+  margin: 5px 0;
+  overflow: hidden;
+}
+
+.bar-fill {
+  background-color: #f4b6c2;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.bar-fill.neutral {
+  background-color: #e4a6a1;
+}
+
+.bar-fill.low {
+  background-color: #6f4e37;
+}

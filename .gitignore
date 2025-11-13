@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# production
+dist/
+build/
+
+# environment variables
+.env
+.env.local
+.env.production
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+
+# IDEs
+.vscode/
+.idea/VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_ENCUESTA_API=
+VITE_FUNCTIONS_BASE=

@@ -1,0 +1,41 @@
+/* Layout base */
+body, #root { background:#fff; }
+.container { max-width:1180px; margin:24px auto; padding:0 16px; }
+
+/* Grid helpers */
+.grid { display:grid; gap:16px; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1100px){ .grid-3{ grid-template-columns:1fr 1fr; } }
+@media (max-width: 760px){ .grid-2, .grid-3{ grid-template-columns:1fr; } }
+
+/* Cards */
+.card { background:#fff; border:1px solid #eef1f6; border-radius:16px; box-shadow:0 18px 44px rgba(0,0,0,.06); }
+.card-pad { padding:14px 16px; }
+.cx-title{ font-weight:600; margin-bottom:6px; }
+
+/* Charts más chicos y proporcionados */
+.chart-wrap { height:230px; }         /* <— tamaño controlado */
+.chart-wrap.sm { height:200px; }
+.chart-wrap.lg { height:260px; }
+
+/* KPI card */
+.kpi { padding:16px; }
+.kpi h3{ font-size:14px; color:#6b7280; margin:0 0 6px; }
+.kpi .v{ font-size:28px; font-weight:600; line-height:1; }
+.kpi .s{ font-size:12px; color:#6b7280; margin-top:6px; }
+
+/* Leyendas/mini detalles */
+.legend{ display:flex; gap:10px; align-items:center; color:#6b7280; margin-top:6px; }
+
+/* Tu gauge legacy (por si lo usas en otro lado) */
+.gauge{position:relative;height:180px;display:grid;place-items:center}
+.arc{position:absolute;inset:0;background:conic-gradient(var(--bad) 0 20%, var(--warn) 20% 40%, var(--ok) 40% 80%, #ddd 80% 100%);border-radius:20px;mask:radial-gradient(circle at 50% 70%, transparent 50%, #000 51%)}
+.nps{position:relative;font-size:42px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-left:10px}
+.dot.bad{background:var(--bad)} .dot.mid{background:var(--warn)} .dot.good{background:var(--ok)}
+.faces{display:flex;justify-content:space-between;gap:10px}
+.face{display:flex;flex-direction:column;align-items:center;gap:6px}
+.face .circle{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #fff, #eee);border:2px solid #e5e7eb}
+.face .label{font-weight:700}
+.face .mini{font-size:12px;color:var(--muted)}

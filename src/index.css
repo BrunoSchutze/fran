@@ -1,0 +1,126 @@
+/* =========================================================
+   PALETA / TOKENS
+   ========================================================= */
+:root {
+  /* Marca nueva */
+
+  --pink:   #E9CDCB;   /* rosa */
+
+  /* Paleta anterior (se usan en varios módulos) */
+  --green:#023025;
+  --brown:#723d00;
+  --white:#fff;
+  --ink:#1f2721;
+
+  /* Trazos y sombras */
+  --radius:16px;
+  --shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   TIPOGRAFÍA: MOKOKO
+   Colocá los archivos en public/fonts/mokoko/
+   ========================================================= */
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoLt.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoRg.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoMd.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoBd.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoXBd.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* cursiva (opcional) */
+@font-face {
+  font-family: "Mokoko";
+  src: url("/fonts/mokoko/MokokoIt.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================================================
+   BASE GLOBAL
+   ========================================================= */
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body{
+  margin:0;
+  /* Usamos Mokoko en todo el sitio */
+  font-family:"Mokoko", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--coffee);
+  /* Fondo marrón suave */
+  background: radial-gradient(
+    1200px 600px at 70% -200px,
+    #3d2d20 0%,
+    var(--coffee) 38%,
+    #22180f 100%
+  );
+}
+
+a{ color:var(--green); text-decoration:none; }
+
+/* Utilidad para títulos en Mokoko color marrón */
+.h-mokoko { font-family:"Mokoko", serif; color:var(--coffee); }
+
+/* =========================================================
+   COMPONENTES EXISTENTES (los dejé tal cual los usabas)
+   ========================================================= */
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;border-bottom:1px solid #eee
+}
+.pill{background:#f2f5f4;color:#0e1b16;border-radius:999px;padding:8px 12px;font-size:14px}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kpi{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:16px}
+.kpi__title{font-size:14px;color:#567}
+.kpi__value{font-size:26px;font-weight:800;margin-top:6px}
+.kpi__sub{font-size:13px;color:#678;margin-top:2px}
+
+.bars{display:flex;flex-direction:column;gap:10px;margin:10px 0 16px}
+.barrow{display:grid;grid-template-columns:1fr 3fr auto;gap:10px;align-items:center}
+.barrow__label{font-size:14px}
+.barrow__track{height:12px;background:#f0f2f1;border-radius:999px;overflow:hidden}
+.barrow__fill{height:100%;background:linear-gradient(90deg,var(--green),#03614b)}
+.barrow__val{font-weight:700}
+
+.table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.table th,.table td{padding:12px;border-bottom:1px solid #eee;text-align:left}
+.btn-link{padding:6px 10px;border-radius:10px;background:var(--green);color:#fff}
+h2{margin:14px 0 8px}
+h3{margin:20px 0 10px}
+
+@media (max-width:900px){
+  .grid3{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+}

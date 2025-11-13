@@ -1,0 +1,60 @@
+/* ====== Paleta & tipografía (solo panel) ====== */
+:root {
+  --ink: #302419;
+  --rose: #E9CDCB;
+  --rose-ink: #6c514d;
+  --muted: #8f8580;
+  --btn: #ff5546; /* rojo del botón Comanda de tu referencia */
+}
+@font-face { font-family:"Mokoko"; src:url("/mokoko/MokokoRg.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Mokoko"; src:url("/mokoko/MokokoMd.otf") format("opentype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Mokoko"; src:url("/mokoko/MokokoBd.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+
+.sp-wrap { font-family:"Mokoko", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+/* ====== Toolbar ====== */
+.sp-toolbar { display:flex; gap:12px; align-items:center; margin: 4px 0 22px; }
+.sp-toggle {
+  display:inline-flex; background:#2e2a27; padding:6px; border-radius:16px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.sp-toggle__btn {
+  color:#dcd6d3; background:transparent; border:0; padding:10px 22px; border-radius:12px;
+  cursor:pointer; font-weight:700;
+}
+.sp-toggle__btn.is-active {
+  background:#fff; color:#1f170f; box-shadow:0 6px 14px rgba(0,0,0,.18);
+}
+
+.sp-select {
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
+  background:#fff; border:1px solid #e9e1df; border-radius:12px; padding:12px 16px;
+  font-weight:600; color:#2c241d; min-width:260px; box-shadow:0 8px 22px rgba(0,0,0,.08);
+  outline:none;
+}
+.sp-iconbtn {
+  display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+  border-radius:50%; border:0; background:#ff6a5e; color:#fff; cursor:pointer;
+  box-shadow:0 10px 18px rgba(255,86,78,.35);
+}
+
+/* ====== Header ====== */
+.sp-header { display:flex; align-items:center; justify-content:space-between; margin: 8px 0 12px; }
+.sp-title  { font-size: clamp(22px, 2.4vw, 28px); color:var(--ink); font-weight:800; }
+.sp-cta {
+  display:inline-flex; align-items:center; gap:10px; border:0; border-radius:12px;
+  padding:12px 16px; background:var(--btn); color:#fff; font-weight:800; cursor:pointer;
+  box-shadow:0 14px 28px rgba(255,86,78,.3);
+}
+
+/* ====== Tarjeta resumen ====== */
+.sp-card {
+  border-radius:18px; background:#fff; box-shadow:0 30px 55px rgba(0,0,0,.12), 0 8px 18px rgba(0,0,0,.08);
+  overflow:hidden; border:1px solid #f0e6e5;
+}
+.sp-row { display:grid; grid-template-columns: 1fr auto; gap:18px; padding:18px 20px; }
+.sp-row + .sp-row { border-top:1px solid #efe5e4; }
+.sp-row--muted { background:#f7f3f2; }
+.sp-row--total { font-weight:800; font-size: clamp(18px, 2vw, 22px); }
+.sp-key { color:#5a4b41; }
+.sp-val { color:var(--ink); }

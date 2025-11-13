@@ -1,0 +1,188 @@
+/* ===========================
+   Toasts — Fran UI
+   Ubicación sugerida: src/components/toast.css
+   =========================== */
+
+:root{
+  --toast-radius: 14px;
+  --toast-shadow: 0 10px 28px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
+
+  /* Brand */
+  --brand-deep: #023025;
+  --brand-text: #0F2B23;
+
+  /* Variants */
+  --ok-bg:    #E9F6F2;
+  --ok-fg:    #0E6B54;
+
+  --err-bg:   #FDECEC;
+  --err-fg:   #C53C3C;
+
+  --warn-bg:  #FFF4E8;
+  --warn-fg:  #723d00;
+
+  --info-bg:  #ECF4FF;
+  --info-fg:  #1264A3;
+}
+
+/* Contenedor (stack) */
+.toast-container{
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  gap: 12px;
+  z-index: 9999;
+  pointer-events: none; /* deja clickear lo de atrás donde no hay toasts */
+}
+
+@media (max-width: 640px){
+  .toast-container{
+    left: 12px;
+    right: 12px;
+  }
+}
+
+/* Toast base */
+.toast{
+  pointer-events: auto;            /* el propio toast sí recibe eventos */
+  min-width: 280px;
+  max-width: 420px;
+  border-radius: var(--toast-radius);
+  box-shadow: var(--toast-shadow);
+  background: #fff;
+  border: 1px solid #eef1f0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  padding: 12px 14px;
+  color: var(--brand-text);
+  position: relative;
+  overflow: hidden;
+
+  animation: toast-in .28s cubic-bezier(.2,.8,.2,1) both;
+}
+
+/* Entrada / salida */
+@keyframes toast-in{
+  from{ opacity: 0; transform: translateX(16px); }
+  to  { opacity: 1; transform: translateX(0); }
+}
+@keyframes toast-out{
+  to{ opacity: 0; transform: translateX(16px); }
+}
+
+/* Estados opcionales */
+.toast[data-state="closing"]{
+  animation: toast-out .22s ease forwards;
+}
+
+/* Icono */
+.toast__icon{
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Contenido */
+.toast__content{
+  display: grid;
+  gap: 2px;
+}
+.toast__title{
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.15;
+}
+.toast__message{
+  font-size: 14px;
+  color: #3b4a46;
+}
+
+/* Botón cerrar */
+.toast__close{
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #6b7f79;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.toast__close:hover{ background: rgba(0,0,0,.05); color: #23312d; }
+
+/* Barra de progreso (opcional)
+   Controlá el avance con: style="--progress: 60%;" */
+.toast__progress{
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 3px;
+  width: var(--progress, 100%);
+  background: currentColor;
+  opacity: .25;
+}
+
+/* ================= Variantes ================= */
+/* SUCCESS */
+.toast--success{
+  background: var(--ok-bg);
+  border-color: rgba(14,107,84,.18);
+  color: var(--brand-text);
+}
+.toast--success .toast__icon{
+  background: rgba(14,107,84,.12);
+  color: var(--ok-fg);
+}
+.toast--success .toast__title{ color: var(--ok-fg); }
+
+/* ERROR */
+.toast--error{
+  background: var(--err-bg);
+  border-color: rgba(197,60,60,.18);
+}
+.toast--error .toast__icon{
+  background: rgba(197,60,60,.12);
+  color: var(--err-fg);
+}
+.toast--error .toast__title{ color: var(--err-fg); }
+
+/* WARNING */
+.toast--warning{
+  background: var(--warn-bg);
+  border-color: rgba(114,61,0,.18);
+}
+.toast--warning .toast__icon{
+  background: rgba(114,61,0,.12);
+  color: var(--warn-fg);
+}
+.toast--warning .toast__title{ color: var(--warn-fg); }
+
+/* INFO */
+.toast--info{
+  background: var(--info-bg);
+  border-color: rgba(18,100,163,.18);
+}
+.toast--info .toast__icon{
+  background: rgba(18,100,163,.12);
+  color: var(--info-fg);
+}
+.toast--info .toast__title{ color: var(--info-fg); }
+
+/* Borde lateral “accent” (opcional) */
+.toast--accent{
+  border-left: 6px solid currentColor;
+  padding-left: 10px;
+}
+
+/* Compacto (opcional) */
+.toast--compact{
+  padding: 10px 12px;
+  gap: 10px;
+}
